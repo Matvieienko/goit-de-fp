@@ -33,30 +33,10 @@ print(f"athlete_event_results rows: {athlete_event_results_df.count()}")
 
 
 # Підготовка даних
-
-# Щоб уникнути конфлікту назв колонок country_noc,
-# залишаю country_noc з athlete_event_results,
-# а в athlete_bio перейменую
-# athlete_bio_df = athlete_bio_df.withColumnRenamed(
-#     "country_noc", "bio_country_noc"
-# )
-
-# # Переконуємось, що height та weight — числові (DoubleType)
-# athlete_bio_df = (
-#     athlete_bio_df
-#     .withColumn("height", col("height").cast(DoubleType()))
-#     .withColumn("weight", col("weight").cast(DoubleType()))
-# )
-
-
-# ==============================
-# Етап 3. Підготовка даних
-# ==============================
-
 # Уникаємо конфлікту country_noc
 athlete_bio_df = athlete_bio_df.withColumnRenamed("country_noc", "bio_country_noc")
 
-# 🔧 ВАЖЛИВО: нормалізуємо та кастимо height / weight до Double
+# Нормалізуємо та кастимо height / weight до Double
 athlete_bio_df = (
     athlete_bio_df
     # коми -> крапки, потім cast до Double
